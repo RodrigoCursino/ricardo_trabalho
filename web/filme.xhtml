@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h1 style="margin-left: 150px">Filmes</h1>
+        <b:container>
+            <b:row>
+                <b:column class="col-md-8 offset-0">
+                    <h:form class="form-horinzontal">
+                <h:selectOneMenu class="form-control" id="genero" value="#{controllerFilme.idGenero}"> 
+                    <f:selectItems value="#{controllerFilme.generos}" 
+                                   var="genero" 
+                                   itemValue="#{genero.generoId}" itemLabel="#{genero.nome}"></f:selectItems>
+                </h:selectOneMenu><br/>
+
+               <h:outputText value="Informe o nome do Filme: " />
+               <h:inputText class="form-control" id="nome" value="#{controllerFilme.filme.nome}" /><br/><br/>
+
+               <h:outputText value="Informe a Sinopse: " />
+               <h:inputText class="form-control" id="sinopse" value="#{controllerFilme.filme.sinopse}" /><br/><br/>
+
+               <h:outputText value="Informe a Ano: " />
+               <h:inputText class="form-control" id="ano" value="#{controllerFilme.filme.ano}" /><br/><br/>
+
+               <h:outputText value="Informe a Capa: " />
+               <h:inputText class="form-control" id="capa" value="#{controllerFilme.filme.capa}" /><br/><br/>
+               <h:commandButton class="btn btn-success" style="margin-bottom: 15px" value="Salvar" action="#{controllerFilme.salvar()}" />
+           </h:form>
+
+                    <h:dataTable class="table table-striped table-bordered table-houver" id="film" value="#{controllerFilme.filmes}" var="f">
+               <h:column>
+                   <f:facet name="header">
+                       <h:outputText value="Filmes"/>
+                   </f:facet>  
+                   <h:outputText value="#{f.nome}"/>
+               </h:column>
+           </h:dataTable>
+                    </b:column>
+                </b:row>
+         </b:container>
+    </h:body>
+</html>
+

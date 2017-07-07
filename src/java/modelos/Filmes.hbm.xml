@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/06/2017 23:16:46 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Filmes" table="filmes" catalog="catalogo_filmes" optimistic-lock="version">
+        <id name="filmeId" type="java.lang.Integer">
+            <column name="filme_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="genero" class="modelos.Genero" fetch="select">
+            <column name="genero_genero_id" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" />
+        </property>
+        <property name="ano" type="java.lang.Integer">
+            <column name="ano" />
+        </property>
+        <property name="capa" type="string">
+            <column name="capa" length="45" unique="true" />
+        </property>
+        <property name="sinopse" type="string">
+            <column name="sinopse" length="5000" />
+        </property>
+    </class>
+</hibernate-mapping>
